@@ -5,17 +5,11 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-def aff_res(image_complex, img_coord_x, img_coord_z, dynamic_range=60, title=None, is_load = False):
+def aff_res(image_complex, img_coord_x, img_coord_z, dynamic_range=60, title=None):
     """
     Fonction pour afficher une image échographique (B-mode).
     Convertit les données complexes en échelle logarithmique (dB).
     """
-
-    if not is_load :
-        image_complex = np.load(image_complex)
-        img_coord_x = np.load(img_coord_x)
-        img_coord_z = np.load(img_coord_z)
-
 
     # Calcul de l'enveloppe (module du signal complexe)
     # On ajoute une valeur (epsilon) pour éviter log(0)
@@ -74,7 +68,7 @@ if __name__ == "__main__":
 
         # Affichage
         aff_res(img_out, x_coord_out, z_coord_out, dynamic_range=60, 
-                     title="Image Reconstruite (CPU)", is_load = True)
+                     title="Image Reconstruite (CPU")
 
     except FileNotFoundError as e:
         print("\nERREUR : Impossible de trouver les fichiers de données.")
