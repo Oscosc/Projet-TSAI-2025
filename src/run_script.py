@@ -492,4 +492,3 @@ if __name__ == """__main__""":
     FOLDER_OUT = '../data/example_abdominal_wall_data_out'
 
     main(folder_in=FOLDER_IN, folder_out=FOLDER_OUT, is_gpu=torch.cuda.is_available())
-    bmode_simple(img_out, x_coord_out, z_coord_out)
