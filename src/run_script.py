@@ -165,7 +165,8 @@ def main(folder_in, folder_out, is_gpu):
                                                             x_size_patch,
                                                             window_val,
                                                             window_val_out, 
-                                                            x_size_batch
+                                                            x_size_batch,
+                                                            reg_param
                                                         )
 
     else:
@@ -434,7 +435,8 @@ def gpu(c0,
         x_size_patch,
         window_val,
         window_val_out, 
-        x_size_batch):
+        x_size_batch,
+        reg_param):
     """_summary_
     """
 
