@@ -1,6 +1,8 @@
-import numpy as np
-from compute_corrected_image import *
+""" Docstring for src.run_script"""
 
+import numpy as np
+import torch
+from compute_corrected_image import *
 
 # ======================================================================================================================
 # SCRIPT
@@ -163,7 +165,8 @@ def main(folder_in, folder_out, is_gpu):
                                                             x_size_patch,
                                                             window_val,
                                                             window_val_out, 
-                                                            x_size_batch
+                                                            x_size_batch,
+                                                            reg_param
                                                         )
 
     else:
@@ -432,7 +435,8 @@ def gpu(c0,
         x_size_patch,
         window_val,
         window_val_out, 
-        x_size_batch):
+        x_size_batch,
+        reg_param):
     """_summary_
     """
 
@@ -480,13 +484,11 @@ def gpu(c0,
 
 
 
-bmode_simple(img_out, x_coord_out, z_coord_out)
-
 
 if __name__ == """__main__""":
 
     # input and output folders
-    FOLDER_IN = 'example_abdominal_wall_data'
-    FOLDER_OUT = 'example_abdominal_wall_data_out'
+    FOLDER_IN = '../data/example_abdominal_wall_data'
+    FOLDER_OUT = '../data/example_abdominal_wall_data_out'
 
-    main(folder_in=FOLDER_IN, folder_out=FOLDER_OUT)
+    main(folder_in=FOLDER_IN, folder_out=FOLDER_OUT, is_gpu=torch.cuda.is_available())

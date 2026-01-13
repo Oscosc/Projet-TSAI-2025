@@ -5,11 +5,12 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-def bmode_simple(image_complex, img_coord_x, img_coord_z, dynamic_range=60, title=None):
+def aff_res(image_complex, img_coord_x, img_coord_z, dynamic_range=60, title=None):
     """
     Fonction pour afficher une image échographique (B-mode).
     Convertit les données complexes en échelle logarithmique (dB).
     """
+
     # Calcul de l'enveloppe (module du signal complexe)
     # On ajoute une valeur (epsilon) pour éviter log(0)
     img_abs = np.abs(image_complex) + 1e-12
@@ -50,7 +51,7 @@ def bmode_simple(image_complex, img_coord_x, img_coord_z, dynamic_range=60, titl
 
 if __name__ == "__main__":
     # Nom du dossier contenant les résultats (doit correspondre au script précédent)
-    FOLDER_OUT = 'example_abdominal_wall_data_out'
+    FOLDER_OUT = '../data/example_abdominal_wall_data_out'
 
     print(f"Chargement des données depuis '{FOLDER_OUT}'...")
 
@@ -66,8 +67,8 @@ if __name__ == "__main__":
         print(f"Plage Z : de {z_coord_out.min():.4f} à {z_coord_out.max():.4f} m")
 
         # Affichage
-        bmode_simple(img_out, x_coord_out, z_coord_out, dynamic_range=60, 
-                     title="Image Reconstruite (CPU)")
+        aff_res(img_out, x_coord_out, z_coord_out, dynamic_range=60, 
+                     title="Image Reconstruite (CPU")
 
     except FileNotFoundError as e:
         print("\nERREUR : Impossible de trouver les fichiers de données.")
